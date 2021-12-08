@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500;900&display=swap');
+
+
+
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+
+html {
+    /* background: rgba(60,128,226); */
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+#canvas1 {
+    position: absolute;
+    top:0;
+    left: 0;
+}
+#canvas2 {
+    filter: blur(1px);
+    /* z-index: 1; */
+}
+
+#canvas3 {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: block;
+    margin: auto;
+    /* z-index: 2; */
+}
+
+.newyear-tree {
+    width: 350px;
+    height:  350px;
+    background: transparent;
+    position: absolute;
+    top: 68%;
+    left: 40%;
+    border-radius: 50%;
+    margin-top: -60px;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+}
+  
+  
+
+    .newyear-block {
+      width: 100%;
+    }
+
+    .newyear-header {
+        font-style: normal;
+        font-weight: 900;
+        font-size: 75px;
+        line-height: 60px;
+        text-align: center;
+        letter-spacing: 0.12em;
+        color: #FFFFFF;
+    }
+
+    .newyear-block__content {
+        position: absolute;
+        width: 100%;
+        
+      
+        top: 134px;
+    }
+
+    .newyear-img__wrapper {
+        position: relative;
+        margin-top: 34px;
+        margin-bottom: 71px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 1500px;
+       
+    }
+
+    .newyear-img {
+        display: block;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .newyear-subheader {
+        
+        font-style: normal;
+        font-weight: normal;
+        font-size: 24px;
+        line-height: 32px;
+        width: 75%;
+        margin: 0 auto;
+        text-align: center;
+        color: #FFFFFF;
+    }
