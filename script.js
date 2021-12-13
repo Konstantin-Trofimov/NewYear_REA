@@ -1,416 +1,171 @@
-const canvas = document.getElementById('canvas1');
-const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-// canvas.height = '100px';
 
-const canvas2 = document.getElementById('canvas2');
-const ctx2 = canvas2.getContext('2d');
-canvas2.width = window.innerWidth;
-canvas2.height = window.innerHeight;
-// canvas2.height = '100px';
 
-ctx2.shadowOffsetX = 1;
-ctx2.shadowOffsetY = 1;
-ctx2.shadowBlur = 0;
-ctx2.shadowColor = 'white';
 
-class Symbol {
-    constructor(x, y, fontSize, canvasHeight){
-        this.characters = '020220❄';
-        this.x = x;
-        this.y = y;
-        this.fontSize = fontSize;
-        this.text = 'A';
-        this.canvasHeight = canvasHeight;
-    }
-    draw(context, context2){
-        context.font = this.fontSize + 'px monospace';
-        this.text = this.characters.charAt(Math.floor(Math.random() * this.characters.length));
-        context.fillStyle = this.color;
-        context.fillText(this.text, this.x * this.fontSize, this.y * this.fontSize);
-        context2.fillText(this.text, this.x * this.fontSize, this.y * this.fontSize);
-        if (this.y * this.fontSize > this.canvasHeight && Math.random() > 0.97){
-            this.y = 0;
+function snowfallAnimation () {
+    const snowfallWrapper = document.querySelector('.new-year__content');
+    let windowWidth = window.innerWidth;
+
+    const canvas = document.getElementById('snowfall-code1');
+    const ctx = canvas.getContext('2d');
+    canvas.width = snowfallWrapper.offsetWidth;
+    canvas.height = snowfallWrapper.offsetHeight;
+
+    const canvas2 = document.getElementById('snowfall-code2');
+    const ctx2 = canvas2.getContext('2d');
+    canvas2.width = snowfallWrapper.offsetWidth;
+    canvas2.height = snowfallWrapper.offsetHeight;
+
+    ctx2.shadowOffsetX = 1;
+    ctx2.shadowOffsetY = 1;
+    ctx2.shadowBlur = 0;
+    ctx2.shadowColor = 'white';
+
+    class Symbol {
+        constructor(x, y, fontSize, canvasHeight){
+            this.characters = '020220❄';
+            this.x = x;
+            this.y = y;
+            this.fontSize = fontSize;
+            this.text = 'A';
+            this.canvasHeight = canvasHeight;
         }
-        else {
-            this.y += 0.9;
-        }
-    }
-}
-
-class Effect {
-    constructor(canvasWidth, canvasHeight){
-        this.fontSize = 16;
-        this.canvasWidth = canvasWidth;
-        this.canvasHeight = canvasHeight;
-        this.columns = this.canvasWidth/this.fontSize;
-        this.symbols = [];
-        this.#initialize();
-    }
-    #initialize(){
-        for (let i = 0; i < this.columns; i++) {
-            this.symbols[i] = new Symbol(i, 0, this.fontSize, this.canvasHeight);
-        }
-    }
-    resize(width, height){
-        this.canvasWidth = width;
-        this.canvasHeight = height;
-        this.columns = this.canvasWidth/this.fontSize;
-        this.symbols = [];
-        this.#initialize();
-    }
-}
-const effect = new Effect(canvas.width, canvas.height);
-let lastTime = 0;
-const fps = 15;
-const nextFrame = 1000/fps;
-let timer = 0;
-
-function animate(timeStamp){
-    const deltaTime = timeStamp - lastTime;
-    lastTime = timeStamp;
-    if (timer > nextFrame){
-        ctx.textAlign = "center";
-        ctx.fillStyle = 'rgba(140, 189, 248, 0.1)';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.font = effect.fontSize + 'px monospace';
-        ctx.fillStyle = '#FFFF';
-        ctx.fillStyle = '#FFFF';
-
-        ctx2.textAlign = "center";
-        ctx2.clearRect(0, 0, canvas.width, canvas.height);
-        ctx2.font = effect.fontSize + 'px monospace';
-        ctx2.fillStyle = 'white';
-
-        effect.symbols.forEach(symbol => symbol.draw(ctx, ctx2));
-        timer = 0;
-    } else {
-        timer += deltaTime;
-    }
-    requestAnimationFrame(animate);
-}
-animate(0);
-
-window.addEventListener('resize', function(){
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    canvas2.width = window.innerWidth;
-    canvas2.height = window.innerHeight;
-    effect.resize(canvas.width, canvas.height);
-})
-
-
-
-
-window.onload = function() {
-
-    window.requestAnimFrame = (function(){
-      return  window.requestAnimationFrame       ||
-              window.webkitRequestAnimationFrame ||
-              window.mozRequestAnimationFrame    ||
-              window.oRequestAnimationFrame      ||
-              window.msRequestAnimationFrame     ||
-              function( callback ){
-                window.setTimeout(callback, 1000 / 60);
-              };
-    })();
-  
-    function animloop() {
-      SYSTEM.totalUpdate();
-      requestAnimFrame(animloop);
-    }
-    setTimeout(() => { document.body.style.backgroundColor = "transporent"; animloop() }, 10);
-    setInterval(() => { SYSTEM.activate(); setTimeout(SYSTEM.deactivate, 7000) }, 60000);
-  
-  };
-  
-  
-  function renderCharacter (character) {
-    switch (character) {
-      case '0': return [[-10, -30], [0, -30], [10, -30], [-20, -20], [20, -20], [-20, -10], [10, -10], [20, -10], [-20, 0], [0, 0], [20, 0], [-20, 10], [-10, 10], [20, 10], [-20, 20], [20, 20], [-10, 30], [0, 30], [10, 30]];
-      case '1': return [[0, -30], [-10, -20], [0, -20], [0, -10], [0, 0], [0, 10], [0, 20], [-10, 30], [0, 30], [10, 30]];
-      case '2': return [[-10, -30], [0, -30], [10, -30], [-20, -20], [20, -20], [-20, -10], [20, -10], [10, 0], [0, 10], [-10, 20], [-20, 30], [-10, 30], [0, 30], [10, 30], [20, 30]];
-      case '9': return [[-10, -30], [0, -30], [10, -30], [-20, -20], [20, -20], [-20, -10], [20, -10], [-10, 0], [0, 0], [10, 0], [20, 0], [20, 10], [-20, 20], [20, 20], [-10, 30], [0, 30], [10, 30]];
-      default: return [];
-    }
-  }
-  
-  SYSTEM = function () {
-    var cnv = document.getElementById('canvas3');
-    var ctx = cnv.getContext('2d');
-  
-    var yearCoords = ['2', '0', '2', '2'].map(renderCharacter).flatMap((coords, i) => coords.map(coord => [coord[0] - 75 + 50 * i, coord[1] + 135]));
-  
-    var Parent = function (childQuant, radius, xPos, yPos) {
-      this.radius   = radius;
-      this.xPos     = xPos;
-      this.yPos     = yPos;
-      this.children = [];
-      this.minDist  = 40;
-      this.isActive = false;
-      this.shapeCoords = [
-  
-        ...yearCoords,
-        [0, -150],
-        [-25, -125], [0, -125], [25, -125],
-        [-50, -100], [-25, -100], [0, -100], [25, -100], [50, -100],
-        [-50, -75, [-50, -100]], [-25, -75], [0, -75], [25, -75], [50, -75, [50, -100]],
-        [-75, -50], [-50, -50], [-25, -50], [0, -50], [25, -50], [50, -50], [75, -50],
-        [-75, -25, [-75, -50]], [-50, -25], [-25, -25], [0, -25], [25, -25], [50, -25], [75, -25, [75, -50]],
-        [-100, 0], [-75, 0], [-50, 0], [-25, 0], [0, 0], [25, 0], [50, 0], [75, 0], [100, 0],
-        [-100, 25, [-100, 0]], [-75, 25], [-50, 25], [-25, 25], [0, 25], [25, 25], [50, 25], [75, 25], [100, 25, [100, 0]],
-        [-125, 50], [-100, 50], [-75, 50], [-50, 50], [-25, 50], [0, 50], [25, 50], [50, 50], [75, 50], [100, 50], [125, 50],
-        [0, 75, [[-25, 105], [-15, 105], [25, 105]]]
-  
-      ];
-  
-  
-      this.born = function () {
-        var maxVelocity = 2.5;
-  
-        for (var i = 0; i < childQuant; i++) {
-          var angle          = Math.random() * 2 * Math.PI;
-          var velocity       = maxVelocity * (0.3 + 0.7 * Math.random());
-          var velAngle       = Math.random() * 2 * Math.PI;
-          var distFromCenter = Math.random() * this.radius;
-  
-          var xPos = (distFromCenter - Child.prototype.RADIUS) * Math.cos(angle);
-          var yPos = (distFromCenter - Child.prototype.RADIUS) * Math.sin(angle);
-          var velX = velocity * Math.cos(velAngle);
-          var velY = velocity * Math.sin(velAngle);
-  
-          this.children.push(new Child(xPos, yPos, velX, velY));
-        }
-      };
-  
-  
-      this.drawChildren = function() {
-        var color,
-            shapeNo = ParentParticle.shapeCoords.length;
-  
-        for (var i = 0; i < this.children.length; i++) {
-          if (i === shapeNo - 1) {
-            color = '#00008b';
-          } else if (i < shapeNo - 58) {
-            color = '#0000ff';
-            this.children[i].noCon = true;
-            this.children[i].RADIUS = 2;
-          } else if (i < shapeNo - 49) {
-            color = '#87cefa';
-          } else if (i < shapeNo - 37) {
-            color = '#00bfff';
-          } else if (i < shapeNo - 21) {
-            color = '#1e90ff';
-          } else if (i < shapeNo - 1) {
-            color = '#0000ff';
-          } else {
-            color = false;
-          }
-  
-          var drawColor = ParentParticle.isActive ? (color ? color : 'rgba(245,245,245, 1)') : 'rgba(245,245,245, 0.9)';
-          this.draw(this.children[i].xPos + this.xPos, this.children[i].yPos + this.yPos, this.children[i].RADIUS, drawColor);  // TODO check the behaviour without drawColor !!!
-  
-          for (var j = 0; j < i; j++) {
-            if (!this.children[i].noCon) {
-              this.drawDistance(this.children[i].xPos, this.children[i].yPos,
-                                this.children[j].xPos, this.children[j].yPos, color);
-  
-            } else if (typeof this.children[i].noCon === 'boolean') {
-              this.drawDistance(this.children[i].xPos, this.children[i].yPos,
-                                this.children[j].xPos, this.children[j].yPos, false, 1);
-  
-            } else if (!(Math.round(this.children[j].xPos) === this.children[i].noCon[0] &&
-                         Math.round(this.children[j].yPos) === this.children[i].noCon[1])) {
-              this.drawDistance(this.children[i].xPos, this.children[i].yPos,
-                                this.children[j].xPos, this.children[j].yPos, color);
+        draw(context, context2){
+            context.font = this.fontSize + 'px monospace';
+            this.text = this.characters.charAt(Math.floor(Math.random() * this.characters.length));
+            context.fillStyle = this.color;
+            context.fillText(this.text, this.x * this.fontSize, this.y * this.fontSize);
+            context2.fillText(this.text, this.x * this.fontSize, this.y * this.fontSize);
+            if (this.y * this.fontSize > this.canvasHeight && Math.random() > 0.97){
+                this.y = 0;
             }
-          }
+            else {
+                this.y += 0.9;
+            }
         }
-      };
-  
-  
-      this.draw = function (x, y, rad, color) {
-        ctx.fillStyle = color;
-        ctx.beginPath();
-        ctx.arc( x, y, rad, 0, Math.PI*2, true );
-        ctx.fill();
-        ctx.closePath();
-      };
-  
-  
-      this.drawDistance = function (x1, y1, x2, y2, color, minDist) {
-        var dist,
-            minimDist = minDist ? minDist : this.minDist,
-            dx = x1 - x2,
-            dy = y1 - y2;
-  
-        dist = Math.sqrt(dx * dx + dy * dy);
-  
-        if (dist <= minimDist) {
-          //draw the line
-  
-          ctx.beginPath();
-        // ctx.strokeStyle = "rgba(111, 112, 39,"+ (1.2-dist / this.minDist) +")";
-          if (ParentParticle.isActive && color) {
-            ctx.strokeStyle = color;
-          } else {
-            ctx.strokeStyle = "rgba(255, 255, 255,"+ (1.2 - dist / this.minDist) +")";
-          }
-          ctx.moveTo(x1 + this.xPos, y1 + this.yPos);
-          ctx.lineTo(x2 + this.xPos, y2 + this.yPos);
-          ctx.stroke();
-          ctx.closePath();
-        }
-  
-      };
-  
-  
-      this.updateChildren = function () {
-        var parentRadSquare = this.radius * this.radius,
-  
-            sound = document.getElementById('soundHandle'),
-            colPointAngle;
-  
-        for (var currChild of this.children) {
-          if (ParentParticle.isActive && currChild.targetPos) {
-            var velStats = getVelocity({ x: currChild.xPos, y: currChild.yPos }, currChild.targetPos);
-            currChild.velX = velStats._velX;
-            currChild.velY = velStats._velY;
-          } else if (currChild.velX === 0 && currChild.velY === 0) {
-            currChild.velX = Math.random() * 3;
-            currChild.velY = Math.random() * 3;
-            currChild.velX = Math.round(currChild.velX, 2) % 2 === 0 ? currChild.velX : -currChild.velX;
-          }
-  
-          var radSquare = currChild.xPos * currChild.xPos + currChild.yPos * currChild.yPos;
-  
-          if (radSquare > parentRadSquare) {
-            var lastXPos = currChild.xPos;
-            var lastYPos = currChild.yPos;
-            var exitX = (lastXPos + currChild.xPos) / 2;
-            var exitY = (lastYPos + currChild.yPos) / 2;
-  
-            var exitRad = Math.sqrt(exitX * exitX + exitY * exitY);
-            exitX   *= this.radius / exitRad;
-            exitY   *= this.radius / exitRad;
-  
-            currChild.xPos = exitX;
-            currChild.yPos = exitY;
-  
-            var twiceProjFactor = 2 * (exitX * currChild.velX + exitY * currChild.velY) / parentRadSquare;
-            currChild.velX  -= twiceProjFactor * exitX;
-            currChild.velY  -= twiceProjFactor * exitY;
-          }
-  
-          currChild.xPos += currChild.velX;
-          currChild.yPos += currChild.velY;
-        }
-  
-      };
-    };
-  
-  
-    function getVelocity (currCoord, targCoord) {
-      var xDist = targCoord.x - currCoord.x;
-      var yDist = targCoord.y - currCoord.y;
-  
-      if (xDist * xDist + yDist * yDist > 0.01) {
-        return {
-          _velX: xDist / 20,
-          _velY: yDist / 20,
-        };
-      } else {
-        return {
-          _velX: 0,
-          _velY: 0
-        };
-      }
     }
-  
-    var Child = function (xPos, yPos, velX, velY) {
-      this.xPos   = Math.round(xPos);
-      this.yPos   = Math.round(yPos);
-      this.velX   = velX;
-      this.velY   = velY;
-    };
-  
-    Child.prototype = {
-      RADIUS: 3
-    };
-  
-  
-    // 61 = 58 (tree) + 3 (extra)
-    var ParentParticle = new Parent(yearCoords.length + 61, 200, cnv.width / 2, cnv.height / 2);
-    ParentParticle.born();
-  
-  
-    var calculateMousePos = function (evt) {
-      var rect = cnv.getBoundingClientRect();
-      var root = document.documentElement;
-      var mouseX = evt.clientX - rect.left - root.scrollLeft;
-      var mouseY = evt.clientY - rect.top - root.scrollTop;
-  
-      return {
-        x: mouseX,
-        y: mouseY
-      };
-    };
-  
-    var activate = function () {
-      ParentParticle.isActive = true;
-      for (var i = 0; i < ParentParticle.shapeCoords.length; i++) {
-        if (typeof ParentParticle.shapeCoords[i][ParentParticle.shapeCoords[i].length - 1] === 'object') {
-          ParentParticle.children[i].noCon = ParentParticle.shapeCoords[i][ParentParticle.shapeCoords[i].length - 1];
+
+    class Effect {
+        constructor(canvasWidth, canvasHeight){
+            this.fontSize = this.fontSizeChange();
+            this.canvasWidth = canvasWidth;
+            this.canvasHeight = canvasHeight;
+            this.columns = this.canvasWidth/this.fontSize;
+            this.symbols = [];
+            this.#initialize();
+            this.fontSizeChange();
         }
-        if (i < yearCoords.length) {
-          ParentParticle.children[i].targetPos = {
-            x: ParentParticle.shapeCoords[i][0] / 1.8,
-            y: ParentParticle.shapeCoords[i][1] / 1.8 + 60
-          };
+        #initialize(){
+            for (let i = 0; i < this.columns; i++) {
+                this.symbols[i] = new Symbol(i, 0, this.fontSize, this.canvasHeight);
+            }
+        }
+        resize(width, height){
+            this.canvasWidth = width;
+            this.canvasHeight = height;
+            this.columns = this.canvasWidth/this.fontSize;
+            this.symbols = [];
+            this.#initialize();
+        }
+
+        fontSizeChange() {
+            let fontSize = 30;
+            if (windowWidth <= 768) {
+                fontSize = 20;
+            } 
+            else if (windowWidth <= 425) {
+                fontSize = 14;
+            }
+            return fontSize;
+        }
+    }
+
+    const effect = new Effect(canvas.width, canvas.height);
+    let lastTime = 0;
+    const fps = 18;
+    const nextFrame = 1000/fps;
+    let timer = 0;
+
+    function animate(timeStamp){
+        const deltaTime = timeStamp - lastTime;
+        lastTime = timeStamp;
+    
+        var gradient = ctx.createLinearGradient(0, 0, 0, 500);
+        gradient.addColorStop(0, "rgba(24,98,206,0.1)");
+        gradient.addColorStop(1, "rgba(37,187,239,0.1)");
+        
+        if (timer > nextFrame){
+            ctx.textAlign = "center";
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.font = effect.fontSize + 'px monospace';
+            ctx.fillStyle = '#FFFF';
+            ctx.fillStyle = '#FFFF';
+
+            ctx2.textAlign = "center";
+            ctx2.clearRect(0, 0, canvas.width, canvas.height);
+            ctx2.font = effect.fontSize + 'px monospace';
+            ctx2.fillStyle = 'white';
+
+            effect.symbols.forEach(symbol => symbol.draw(ctx, ctx2));
+            timer = 0;
         } else {
-          ParentParticle.children[i].targetPos = {
-            x: ParentParticle.shapeCoords[i][0],
-            y: ParentParticle.shapeCoords[i][1]
-          };
+            timer += deltaTime;
         }
-      }
-    };
-  
-    var deactivate = function () {
-      ParentParticle.isActive = false;
-      for (var i = 0; i < ParentParticle.children.length; i++) {
-        ParentParticle.children[i].targetPos = undefined;
-      }
-    };
-  
-    var mouseMoveListener = function (evt) {
-      var mousePos = calculateMousePos(evt);
-      var x0 = ParentParticle.xPos - mousePos.x;
-      var y0 = ParentParticle.yPos - mousePos.y;
-      var mouseToCenterDist = Math.sqrt(x0 * x0 + y0 * y0);
-  
-      if (mouseToCenterDist < ParentParticle.radius && !ParentParticle.isActive) {
-        activate();
-      } else if (mouseToCenterDist > ParentParticle.radius && ParentParticle.isActive){
-        deactivate();
-      }
-    };
-  
-    cnv.addEventListener('mousemove', mouseMoveListener);
-  
-    var totalUpdate = function() {
-      ctx.clearRect(0, 0, cnv.width, cnv.height);
-      this.draw(this.xPos, this.yPos, this.radius, '');
-      this.updateChildren();
-      this.drawChildren();
+        requestAnimationFrame(animate);
     }
-  
-  
-    return {
-      activate: activate,
-      deactivate: deactivate,
-      totalUpdate: totalUpdate.bind(ParentParticle)
-    };
-  
-  }();
+    animate(0);
+
+    window.addEventListener('resize', function(){
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        canvas2.width = window.innerWidth;
+        canvas2.height = window.innerHeight;
+        effect.resize(canvas.width, canvas.height);
+    })
+}
+
+let christmasBallsConfig = [
+    {
+        emergenceDate: new Date('2021-12-20'),
+        selector: 'new-year__ball_green'
+    },
+    {
+        emergenceDate: new Date('2021-12-21'),
+        selector: 'new-year__ball_red-small'
+    },
+    {
+        emergenceDate: new Date('2021-12-22'),
+        selector: 'new-year__ball_purple'
+    },
+    {
+        emergenceDate: new Date('2021-12-23'),
+        selector: 'new-year__ball_blue'
+    },
+    {
+        emergenceDate: new Date('2021-12-24'),
+        selector: 'new-year__ball_red-big'
+    },
+    {
+        emergenceDate: new Date('2021-12-25'),
+        selector: 'new-year__ball_yellow'
+    }
+];
+
+function showChristmasBall (selector, emergenceDate, currentDate) {
+    let elment = document.querySelector(`.${selector}`); 
+    
+    if (currentDate >= emergenceDate) {
+        elment.style.display = 'block';
+    }
+}
+
+function christmasBalls() {
+    let date = new Date('2022-12-01');
+
+    christmasBallsConfig.forEach(ball => showChristmasBall(ball.selector, ball.emergenceDate, date));
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    christmasBalls();
+    snowfallAnimation();
+})

@@ -1,2 +1,14 @@
-# the-matrix-code
-![Screenshot (462)](https://user-images.githubusercontent.com/40804626/143687826-38ee23f7-fb36-491b-80bb-b5ea89ab87d8.png)
+## Дли добавления на сайт:
+
+* Cкопировать и вставить div с классом new-year</l>
+* Поменять пути для файлов js, css и изображений на необходимый</l>
+ 
+### Путь к изображениям ./new_year_img/
+### файлы new_year.js и new_year.css не минифицированы
+### Транспайлер для js не использовался 
+
+По остальным вопросам писать в [telegram](t.me/consttro)
+
+
+
+
