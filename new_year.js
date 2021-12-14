@@ -7,13 +7,26 @@ function snowfallAnimation () {
 
     const canvas = document.getElementById('snowfall-code1');
     const ctx = canvas.getContext('2d');
-    canvas.width = snowfallWrapper.offsetWidth;
-    canvas.height = snowfallWrapper.offsetHeight;
+    
 
     const canvas2 = document.getElementById('snowfall-code2');
     const ctx2 = canvas2.getContext('2d');
+    
+    canvas.width = snowfallWrapper.offsetWidth;
     canvas2.width = snowfallWrapper.offsetWidth;
-    canvas2.height = snowfallWrapper.offsetHeight;
+
+    if (windowWidth > 768) {
+        canvas.height = snowfallWrapper.offsetHeight;
+        canvas2.height = snowfallWrapper.offsetHeight;
+    } 
+    else if (windowWidth < 768 && windowWidth > 483)  {
+        canvas.height = 1200;
+        canvas2.height = 1200;
+    }
+    else {
+        canvas.height = 940;
+        canvas2.height = 940;
+    }
 
     ctx2.shadowOffsetX = 1;
     ctx2.shadowOffsetY = 1;

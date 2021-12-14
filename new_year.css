@@ -7,6 +7,7 @@ body, html {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+     
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
@@ -32,12 +33,18 @@ body {
             box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
     position: relative;
-    overflow: hidden;
     width: 100%;
     height: 700px;
     background: -webkit-gradient(linear, left top, left bottom, from(rgba(24,98,206,1)), to(rgba(37,187,239,1)));
     background: -o-linear-gradient(top, rgba(24,98,206,1) 0%, rgba(37,187,239,1) 100%);
     background: linear-gradient(180deg, rgba(24,98,206,1) 0%, rgba(37,187,239,1) 100%);
+}
+
+.new-year__wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
 
 .new-year__bg {
@@ -52,8 +59,6 @@ body {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    padding-top: 130px;
-    padding-bottom: 90px;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
@@ -65,7 +70,6 @@ body {
 }
 
 .new-year__center-block {
-    height: 100%;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -80,6 +84,8 @@ body {
         -ms-flex-align: center;
             align-items: center;
     width: 800px;
+    padding-top: 130px;
+    padding-bottom: 90px;
 }
 
 .new-year__header {
@@ -152,6 +158,17 @@ body {
     transition: transform .7s, -webkit-transform .7s;
 }
 
+.new-year__ball::after {
+    content: '';
+    position: absolute;
+    width: .5px;
+    background-color: #FFFFFF;
+    height: 150%;
+    top: -150%;
+    left: 49.9%;
+    transform: translateX(-50%);
+}
+
 .new-year__ball:hover {
     -webkit-transform: scale(1.1);
     -ms-transform: scale(1.1);
@@ -170,43 +187,43 @@ body {
 }
 
 .new-year__ball_green {
-    top: -140px;
-    right: -40px;
+    top: 320px;
+    right: -75px;
     width: 213px;
     z-index: 1;
 }
 
 .new-year__ball_red-small {
-    top: -150px;
-    right: 110px;
+    top: 200px;
+    right: 80px;
     width: 193px;
     z-index: 2;
 }
 
 .new-year__ball_purple {
-    top: -150px;
-    right: 5px;
+    top: 40px;
+    right: -40px;
     width: 205px;
     z-index: 3;
 }
 
 .new-year__ball_blue {
-    top: -150px;
-    left: -10px;
+    top: 320px;
+    left: -60px;
     width: 185px;
     z-index: 1;
 }
 
 .new-year__ball_red-big {
-    top: -150px;
+    top: 45px;
     left: -45px;
     width:  215px;
     z-index: 2;
 }
 
 .new-year__ball_yellow {
-    top: -160px;
-    left: 105px;
+    top: 180px;
+    left: 70px;
     width: 205px;
     z-index: 3;
 }
@@ -236,6 +253,10 @@ body {
     transition: transform .7s, -webkit-transform .7s;
 }
 
+.new-year__ball-link {
+    width: 100%;
+    height: 80%;
+}
 
 .new-year__ball-link span {
     text-align: center;
@@ -250,21 +271,7 @@ body {
     max-width: 85%;
 }
 
-.new-year__ball-link_green, .new-year__ball-link_red-big {
-    height: 220px;
-}
 
-.new-year__ball-link_red-small {
-    height: 200px;
-}
-
-.new-year__ball-link_purple, .new-year__ball-link_yellow {
-    height: 210px;
-}
-
-.new-year__ball-link_blue {
-    height: 195px;
-}
 
 #snowfall-code1, #snowfall-code2 {
     position: absolute;
@@ -302,10 +309,10 @@ body {
     }
 }
 
-@media (max-width: 1462px) {
+@media screen and (max-width: 1462px) {
 
     .new-year__center-block {
-        width: calc(400px + (800 - 400) * ((100vw - 320px) /  (1462 - 320)));
+        width: calc(350px + (800 - 350) * ((100vw - 320px) /  (1462 - 320)));
     }
 
     .new-year__year-wrapper {
@@ -327,23 +334,19 @@ body {
     }
    
     .new-year__ball_green {
-        width: calc(140px + (214 - 140) * ((100vw - 320px) /  (1462 - 320)));
+        width: calc(140px + (213 - 140) * ((100vw - 320px) /  (1462 - 320)));
     }
     
     .new-year__ball_red-small {
         width: calc(120px + (193 - 120) * ((100vw - 320px) /  (1462 - 320)));
-        right: 50px;
     }
     
     .new-year__ball_purple {
         width: calc(140px + (205 - 140) * ((100vw - 320px) /  (1462 - 320)));
-        right: -50px;
     }
     
     .new-year__ball_blue {
         width: calc(130px + (185 - 130) * ((100vw - 320px) /  (1462 - 320)));
-        left: -35px;
-        top: -150px;
     }
     
     .new-year__ball_red-big {
@@ -352,78 +355,107 @@ body {
     
     .new-year__ball_yellow {
         width: calc(140px + (205 - 140) * ((100vw - 320px) /  (1462 - 320)));
-        left: 25px;
-        top: -170px;
     }
 
     .new-year__ball-link_green {
-        height: 140px;
-        height: calc(130px + (205 - 130) * ((100vw - 320px) /  (1462 - 320)));
+        width: calc(130px + (213 - 130) * ((100vw - 320px) /  (1462 - 320)));
     }
-
-    .new-year__ball-link_red-big {
-        height: calc(120px + (220 - 120) * ((100vw - 320px) /  (1462 - 320)));
-    }
-    
-    .new-year__ball-link_red-small {
-        height: calc(120px + (200 - 120) * ((100vw - 320px) /  (1462 - 320)));
-    }
-    
-    .new-year__ball-link_purple {
-        height: calc(140px + (210 - 140) * ((100vw - 320px) /  (1462 - 320)));
-    }
-
-    .new-year__ball-link_yellow {
-        height: calc(145px + (210 - 145) * ((100vw - 320px) /  (1462 - 320)));
-    }
-    
-    .new-year__ball-link_blue {
-        height: calc(130px + (195 - 130) * ((100vw - 320px) /  (1462 - 320)));
-    }
-
-    .new-year {
-        height: calc(500px + (700 - 500) * ((100vw - 320px) /  (1462 - 320)));
-    }
-    
 
     .new-year__ball-link span {
         font-size: calc(10px + (16 - 10) * ((100vw - 320px) /  (1462 - 320)));
         line-height: calc(14px + (24 - 14) * ((100vw - 320px) /  (1462 - 320)));
     }
 
+ 
 }
 
-@media (max-width: 1196px) {
+@media screen and (max-width: 1269px) {
+    .new-year__ball-link span {
+        max-width: 75%;
+    }
+} 
 
-    .new-year__right-block {
-        left: -25px;
+@media screen and (max-width: 1196px) {
+
+    .new-year__center-block {
+        padding-top: 0;
+        padding-bottom: 0;
+        height: 300px;
+        align-self: center;
     }
 
-    .new-year__left-block {
-        right: -25px;
+    .new-year__ball_red-small::after, .new-year__ball_green::after, .new-year__ball_yellow::after, .new-year__ball_blue::after {
+        height: 100px;
+        top: -100px;
     }
-}
 
-@media (max-width: 768px) {
+    .new-year__ball_purple {
+        right: -48px;
+        top: 40px;
+    }
+
+    .new-year__ball_red-small {
+        right: -40px;
+        top: 290px;
+    }
+
+    .new-year__ball_green {
+        right: -50px;
+        top: 530px;
+    }
+
+    .new-year__ball_blue {
+        top: 310px;
+        left: -40px;
+        z-index: 3;
+    }
+    
+    .new-year__ball_red-big {
+        top: 45px;
+        left: -40px;
+        z-index: 3;
+    }
+    
+    .new-year__ball_yellow {
+        z-index: 2;
+        top: 560px;
+        left: -40px;
+        
+    }
 
     .new-year {
         height: 830px
     } 
+  
+}
+
+@media (max-width: 1024px)  {
+    .new-year__wrapper {
+        overflow: scroll;
+    }
+}
+
+@media  (max-width: 768px)  {
+    .new-year {
+        height: 1200px
+    } 
 
     .new-year__center-block {
         position: absolute;
-        top: 550px;
+        top: 50px;
         height: 270px;
     }
 
+    .new-year__right-block,  .new-year__left-block{
+       margin-top: 300px;
+    }
+
     .new-year__right-block {
-        margin-left: 40px;
-        
+        margin-left: 90px; 
     }
     
     .new-year__left-block {
-        margin-right: 40px;
-        
+        margin-right: 90px; 
     }
 
     .new-year__right-block {
@@ -445,53 +477,65 @@ body {
         -ms-transform: none;
         transform: none;
     }
+
+    .new-year__ball_purple::after, .new-year__ball_red-big::after {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    
 }
 
 @media (max-width: 483px) {
 
     .new-year {
-        height: 880px
+        height: 940px
     } 
-    
-    .new-year__center-block {
-        position: absolute;
-        top: 580px;
-        height: 250px;
-    }
-    
-    .new-year__left-block {
-        margin-right: 40px;
+
+    .new-year__ball_red-small::after, .new-year__ball_green::after, .new-year__ball_yellow::after, .new-year__ball_blue::after {
+        height: 70px;
+        top: -70px;
     }
 
-    .new-year__ball_blue {    
-        left: -50px;
-        top: -50px;
+    .new-year__ball_purple {
+        right: -48px;
+        top: 40px;
     }
 
     .new-year__ball_red-small {
         right: -40px;
-        top: -100px;
+        top: 240px;
     }
 
-    .new-year__ball_yellow {
-        left: -55px;
-        top: -140px;
-        z-index: 4;
-    } 
-
-    .new-year__ball_red-big {
-        right: -20px;
-        top: -190px;
-        z-index: 5;
-    }
-    
-    .new-year__ball_purple {
-        right: -50px;
-        top: -200px;
-    }
-    
     .new-year__ball_green {
-        left: -100px;
-        top: -10px;
+        right: -50px;
+        top: 420px;
+    }
+
+    .new-year__ball_blue {
+        top: 420px;
+        left: -50px;
+        z-index: 1;
+    }
+    
+    .new-year__ball_red-big {
+        top: 40px;
+        left: -40px;
+        z-index: 3;
+    }
+    
+    .new-year__ball_yellow {
+        z-index: 2;
+        top: 220px;
+        left: -50px;
+    }
+
+    .new-year__right-block {
+        margin-left: 60px; 
+    }
+    
+    .new-year__left-block {
+        margin-right: 60px; 
     }
 }
