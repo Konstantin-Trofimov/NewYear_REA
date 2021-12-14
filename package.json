@@ -2,7 +2,7 @@
   "name": "rea-new-year",
   "version": "1.0.0",
   "description": "* Cкопировать и вставить div с классом new-year</l>\r * Поменять пути для файлов js, css и изображений на необходимые</l>",
-  "main": "new_year.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

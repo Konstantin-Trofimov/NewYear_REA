@@ -179,6 +179,6 @@ function christmasBalls() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    christmasBalls();
+    // christmasBalls();
     snowfallAnimation();
 })
