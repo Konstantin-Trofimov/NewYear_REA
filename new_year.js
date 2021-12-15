@@ -173,12 +173,12 @@ function showChristmasBall (selector, emergenceDate, currentDate) {
 }
 
 function christmasBalls() {
-    let date = new Date('2022-12-01');
+    let date = new Date('2022-01-01');
 
     christmasBallsConfig.forEach(ball => showChristmasBall(ball.selector, ball.emergenceDate, date));
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    // christmasBalls();
+    christmasBalls();
     snowfallAnimation();
 })
