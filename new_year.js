@@ -2,31 +2,18 @@
 
 
 function snowfallAnimation () {
-    const snowfallWrapper = document.querySelector('.new-year__content');
     let windowWidth = window.innerWidth;
 
     const canvas = document.getElementById('snowfall-code1');
     const ctx = canvas.getContext('2d');
-    
 
     const canvas2 = document.getElementById('snowfall-code2');
     const ctx2 = canvas2.getContext('2d');
     
-    canvas.width = snowfallWrapper.offsetWidth;
-    canvas2.width = snowfallWrapper.offsetWidth;
-
-    if (windowWidth > 768) {
-        canvas.height = snowfallWrapper.offsetHeight;
-        canvas2.height = snowfallWrapper.offsetHeight;
-    } 
-    else if (windowWidth < 768 && windowWidth > 483)  {
-        canvas.height = 1200;
-        canvas2.height = 1200;
-    }
-    else {
-        canvas.height = 940;
-        canvas2.height = 940;
-    }
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    canvas2.width = window.innerWidth;
+    canvas2.height = window.innerHeight;
 
     ctx2.shadowOffsetX = 1;
     ctx2.shadowOffsetY = 1;
@@ -135,12 +122,18 @@ function snowfallAnimation () {
         canvas2.height = window.innerHeight;
         effect.resize(canvas.width, canvas.height);
     })
+
+
 }
 
 let christmasBallsConfig = [
     {
+        emergenceDate: new Date('2021-12-18'),
+        selector: 'new-year__ball_blue'
+    },
+    {
         emergenceDate: new Date('2021-12-20'),
-        selector: 'new-year__ball_green'
+        selector: 'new-year__ball_yellow'
     },
     {
         emergenceDate: new Date('2021-12-21'),
@@ -148,19 +141,15 @@ let christmasBallsConfig = [
     },
     {
         emergenceDate: new Date('2021-12-22'),
-        selector: 'new-year__ball_purple'
+        selector: 'new-year__ball_green'
     },
     {
         emergenceDate: new Date('2021-12-23'),
-        selector: 'new-year__ball_blue'
-    },
-    {
-        emergenceDate: new Date('2021-12-24'),
         selector: 'new-year__ball_red-big'
     },
     {
-        emergenceDate: new Date('2021-12-25'),
-        selector: 'new-year__ball_yellow'
+        emergenceDate: new Date('2021-12-24'),
+        selector: 'new-year__ball_purple'
     }
 ];
 
@@ -169,12 +158,11 @@ function showChristmasBall (selector, emergenceDate, currentDate) {
     
     if (currentDate >= emergenceDate) {
         elment.style.display = 'block';
-    }
+    } 
 }
 
 function christmasBalls() {
-    let date = new Date('2022-01-01');
-
+    let date = new Date();
     christmasBallsConfig.forEach(ball => showChristmasBall(ball.selector, ball.emergenceDate, date));
 }
 
@@ -182,3 +170,4 @@ document.addEventListener('DOMContentLoaded', () => {
     christmasBalls();
     snowfallAnimation();
 })
+

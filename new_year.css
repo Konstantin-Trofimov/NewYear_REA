@@ -9,8 +9,7 @@ body, html {
     display: flex; 
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+          
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
@@ -24,6 +23,10 @@ body {
     margin: 0;
     padding: 0;
 }
+
+/* header, footer {
+    height: 400px;
+} */
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500;900&display=swap');
 
@@ -530,7 +533,7 @@ body {
     .new-year__center-block {
         height: 230px;
         position: relative;
-        top: 300px;
+        top: 25%;
     }
 
     .new-year__wrapper {
@@ -546,29 +549,23 @@ body {
     }
 }
 
-
-
-
-
 @media (max-height: 414px) and (max-width: 823px) {
-
-
     .new-year__center-block {
         height: 230px;
         position: relative;
         top: 50%;
     }
 
-    
+    .new-year-subheader {
+        margin-top: 10px;
+    }
 
     .new-year__right-block {
         margin-left: 5px; 
-        
     }
     
     .new-year__left-block {
         margin-right: 5px; 
-
     }
 
     .new-year {
