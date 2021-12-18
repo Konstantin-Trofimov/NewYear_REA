@@ -1,0 +1,19 @@
+{
+  "name": "rea-new-year",
+  "version": "1.0.0",
+  "description": "* Cкопировать и вставить div с классом new-year</l>\r * Поменять пути для файлов js, css и изображений на необходимые</l>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Konstantin-Trofimov/NewYear_REA.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Konstantin-Trofimov/NewYear_REA/issues"
+  },
+  "homepage": "https://github.com/Konstantin-Trofimov/NewYear_REA#readme"
+}

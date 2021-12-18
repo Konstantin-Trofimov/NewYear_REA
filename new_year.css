@@ -1,0 +1,630 @@
+body, html { 
+    width: 100%;
+    height: 100%;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    background-color: #000;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex; 
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+          
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* header, footer {
+    height: 400px;
+} */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500;900&display=swap');
+
+.new-year {
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    width: 100%;
+    height: 700px;
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(24,98,206,1)), to(rgba(37,187,239,1)));
+    background: -o-linear-gradient(top, rgba(24,98,206,1) 0%, rgba(37,187,239,1) 100%);
+    background: linear-gradient(180deg, rgba(24,98,206,1) 0%, rgba(37,187,239,1) 100%);
+}
+
+.new-year__wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.new-year__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.new-year__content {
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: space-between;
+        -ms-flex-pack: space-between;
+            justify-content: space-between;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.new-year__center-block {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    width: 800px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding-top: 130px;
+    padding-bottom: 90px;
+    height: 460px;
+}
+
+.new-year__header {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 54px;
+    line-height: 58px;
+    color: #FFFFFF;
+    letter-spacing: 0.05em;
+    margin: 0;
+    padding: 0;
+}
+
+.new-year__year-wrapper {
+    position: relative;
+    width: 600px;
+}
+
+.new-year__year-img {
+    width: 100%;
+    height: 100%;
+}
+
+.new-year__snowflake-wrapper {
+    width: 250px;
+    height:  250px;
+    background: transparent;
+    position: absolute;
+    top: 52%;
+    left: 39%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.new-year-subheader {
+    margin: 0 auto;
+    width: 600px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.new-year__right-block, .new-year__left-block {
+    position: relative;
+  
+}
+
+.new-year__right-block {
+    margin-right: auto; 
+    margin-left: 400px; 
+}
+
+.new-year__left-block {
+    margin-left: auto;
+    margin-right: 400px; 
+}
+
+.new-year__ball {
+    display: none;
+    position: absolute;
+    height: auto;
+    -webkit-transition: transform .7s;
+    -moz-transition: transform .7s;
+    -ms-transition: transform .7s;
+    -o-transition: transform .7s;
+    will-change: transform;
+    -webkit-transition: -webkit-transform .7s;
+    transition: -webkit-transform .7s;
+    transition: transform .7s;
+    transition: transform .7s, -webkit-transform .7s;
+}
+
+.new-year__ball::after {
+    content: '';
+    position: absolute;
+    width: .5px;
+    background-color: #FFFFFF;
+    height: 150%;
+    top: -150%;
+    left: 49.9%;
+    transform: translateX(-50%);
+}
+
+.new-year__ball:hover {
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+.new-year__ball:hover > a {
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+.new-year__ball img {
+    width: 100%;
+    height: 100%;
+}
+
+.new-year__ball_green {
+    top: 320px;
+    right: -75px;
+    width: 213px;
+    z-index: 1;
+}
+
+.new-year__ball_red-small {
+    top: 200px;
+    right: 80px;
+    width: 193px;
+    z-index: 2;
+}
+
+.new-year__ball_purple {
+    top: 40px;
+    right: -40px;
+    width: 205px;
+    z-index: 3;
+}
+
+.new-year__ball_blue {
+    top: 320px;
+    left: -60px;
+    width: 185px;
+    z-index: 1;
+}
+
+.new-year__ball_red-big {
+    top: 45px;
+    left: -45px;
+    width:  215px;
+    z-index: 2;
+}
+
+.new-year__ball_yellow {
+    top: 180px;
+    left: 70px;
+    width: 205px;
+    z-index: 3;
+}
+
+.new-year__ball-link {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    position: absolute;
+    bottom: 5px;
+    text-decoration: none;
+    width: auto;
+    -webkit-transition: transform .7s;
+    -moz-transition: transform .7s;
+    -ms-transition: transform .7s;
+    -o-transition: transform .7s;
+    will-change: transform;
+    -webkit-transition: -webkit-transform .7s;
+    transition: -webkit-transform .7s;
+    transition: transform .7s;
+    transition: transform .7s, -webkit-transform .7s;
+}
+
+.new-year__ball-link {
+    width: 100%;
+    height: 80%;
+}
+
+.new-year__ball-link span {
+    text-align: center;
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 24px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    max-width: 85%;
+}
+
+
+
+#snowfall-code1, #snowfall-code2 {
+    position: absolute;
+}
+
+#snowfall-code2 {
+    -webkit-filter: blur(1px);
+            filter: blur(1px);
+}
+
+#snowflake {
+    -webkit-animation: rotation 20s infinite linear;
+            animation: rotation 20s infinite linear;
+}
+
+@-webkit-keyframes rotation {
+    from {
+        -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(359deg);
+                transform: rotate(359deg);
+    }
+}
+
+@keyframes rotation {
+    from {
+        -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(359deg);
+                transform: rotate(359deg);
+    }
+}
+
+@media screen and (max-width: 1462px) {
+
+    .new-year__right-block {
+        margin-left: calc(150px + (400 - 150) * ((100vw - 320px) /  (1462 - 320)));
+    }
+    
+    .new-year__left-block {
+        margin-right: calc(150px + (400 - 150) * ((100vw - 320px) /  (1462 - 320)));
+    }
+
+    .new-year__center-block {
+        width: calc(350px + (800 - 350) * ((100vw - 320px) /  (1462 - 320)));
+    }
+
+    .new-year__year-wrapper {
+        width: calc(300px + (600 - 300) * ((100vw - 320px) /  (1462 - 320)));
+    }
+
+    .new-year__header {
+        font-size: calc(24px + (54 - 24) * ((100vw - 320px) /  (1462 - 320)));
+    }
+
+    .new-year-subheader {
+        font-size: calc(12px + (24 - 12) * ((100vw - 320px) /  (1462 - 320)));
+        width: calc(300px + (600 - 300) * ((100vw - 320px) /  (1462 - 320)));
+    }
+
+    .new-year__snowflake-wrapper {
+        width: calc(130px + (250 - 130) * ((100vw - 320px) /  (1462 - 320)));
+        height: calc(130px + (250 - 130) * ((100vw - 320px) /  (1462 - 320)));
+    }
+   
+    .new-year__ball_green {
+        width: calc(140px + (213 - 140) * ((100vw - 320px) /  (1462 - 320)));
+    }
+    
+    .new-year__ball_red-small {
+        width: calc(120px + (193 - 120) * ((100vw - 320px) /  (1462 - 320)));
+    }
+    
+    .new-year__ball_purple {
+        width: calc(140px + (205 - 140) * ((100vw - 320px) /  (1462 - 320)));
+    }
+    
+    .new-year__ball_blue {
+        width: calc(130px + (185 - 130) * ((100vw - 320px) /  (1462 - 320)));
+    }
+    
+    .new-year__ball_red-big {
+        width: calc(120px + (215 - 120) * ((100vw - 320px) /  (1462 - 320)));
+    }
+    
+    .new-year__ball_yellow {
+        width: calc(140px + (205 - 140) * ((100vw - 320px) /  (1462 - 320)));
+    }
+
+    .new-year__ball-link_green {
+        width: calc(130px + (213 - 130) * ((100vw - 320px) /  (1462 - 320)));
+    }
+
+    .new-year__ball-link span {
+        font-size: calc(10px + (16 - 10) * ((100vw - 320px) /  (1462 - 320)));
+        line-height: calc(14px + (24 - 14) * ((100vw - 320px) /  (1462 - 320)));
+    }
+
+ 
+}
+
+@media screen and (max-width: 1269px) {
+    .new-year__ball-link span {
+        max-width: 75%;
+    }
+} 
+
+@media screen and (max-width: 1196px) {
+    .new-year__content {
+        height: auto;
+    }
+
+    .new-year__right-block,  .new-year__left-block {
+        position: relative;
+        height: 100%;
+    }
+
+    .new-year__ball_red-small::after, .new-year__ball_green::after, .new-year__ball_yellow::after, .new-year__ball_blue::after {
+        height: 100px;
+        top: -100px;
+    }
+
+    .new-year__ball_purple {
+        right: -48px;
+        top: 40px;
+    }
+
+    .new-year__ball_red-small {
+        right: -40px;
+        top: 290px;
+    }
+
+    .new-year__ball_green {
+        right: -50px;
+        top: 530px;
+    }
+
+    .new-year__ball_blue {
+        top: 290px;
+        left: -40px;
+        z-index: 2;
+    }
+    
+    .new-year__ball_red-big {
+        top: 40px;
+        left: -40px;
+        z-index: 3;
+    }
+    
+    .new-year__ball_yellow {
+        z-index: 1;
+        top: 530px;
+        left: -40px;
+    }
+}
+
+@media (max-width: 1024px)  {
+
+    .new-year {
+        height: 840px;;
+    }
+
+    .new-year__right-block,  .new-year__left-block {
+        position: relative;
+        height: 100%;
+    }
+
+    .new-year__bg {
+        display: none !important;
+    }
+
+    .new-year__content {
+        position: unset;
+    }
+
+    
+}
+
+@media  (max-width: 768px)  {
+    .new-year {
+        height: fit-content;
+    }
+
+    .new-year__wrapper {
+        overflow: unset;
+    }
+
+    .new-year__center-block {
+        padding-top: 0;
+        padding-bottom: 0;
+        height: 330px;
+        position: relative;
+        top: 200px;
+        left: 0;
+        transform: none;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+
+    .new-year__right-block,  .new-year__left-block{
+        margin-top: 30px;
+        position: relative;
+        flex-direction: column-reverse;
+        padding-bottom: 20px;
+        top: 0;
+        left: 0;
+        transform: none;
+    }
+
+    .new-year__right-block {
+        margin-left: 30px;   
+    }
+    
+    .new-year__left-block {
+        margin-right: 30px; 
+    }
+
+    .new-year__ball {
+        width: 145px;
+        height: 175px;
+        position: initial;
+    }
+
+    .new-year__ball:hover {
+        -webkit-transform: none;
+        -ms-transform: none;
+        transform: none;
+    }
+    
+    .new-year__ball:hover > a {
+        -webkit-transform: none;
+        -ms-transform: none;
+        transform: none;
+    }
+
+    .new-year__ball_purple::after, .new-year__ball_red-big::after, .new-year__ball_red-small::after, .new-year__ball_green::after, .new-year__ball_yellow::after, .new-year__ball_blue::after {
+        display: none;
+    }
+}
+
+
+
+
+@media (max-width: 483px) {
+    .new-year__center-block {
+        height: 230px;
+        position: relative;
+        top: 25%;
+    }
+
+    .new-year__wrapper {
+        padding-top: 20px;
+    }
+
+    .new-year__right-block {
+        margin-left: 5px; 
+    }
+    
+    .new-year__left-block {
+        margin-right: 5px; 
+    }
+}
+
+@media (max-height: 414px) and (max-width: 823px) {
+    .new-year__center-block {
+        height: 230px;
+        position: relative;
+        top: 50%;
+    }
+
+    .new-year-subheader {
+        margin-top: 10px;
+    }
+
+    .new-year__right-block {
+        margin-left: 5px; 
+    }
+    
+    .new-year__left-block {
+        margin-right: 5px; 
+    }
+
+    .new-year {
+        height: fit-content;
+    }
+
+    .new-year__wrapper {
+        overflow: unset;
+    }
+
+    .new-year__right-block,  .new-year__left-block{
+        margin-top: 400px;
+        position: relative;
+        flex-direction: column-reverse;
+        padding-bottom: 20px;
+        top: 0;
+        left: 0;
+        transform: none;
+    }
+
+    .new-year__right-block {
+        margin-left: 30px;   
+    }
+    
+    .new-year__left-block {
+        margin-right: 30px; 
+    }
+
+    .new-year__ball {
+        width: 145px;
+        height: 175px;
+        position: initial;
+    }
+
+    .new-year__ball:hover {
+        -webkit-transform: none;
+        -ms-transform: none;
+        transform: none;
+    }
+    
+    .new-year__ball:hover > a {
+        -webkit-transform: none;
+        -ms-transform: none;
+        transform: none;
+    }
+
+    .new-year__ball_purple::after, .new-year__ball_red-big::after, .new-year__ball_red-small::after, .new-year__ball_green::after, .new-year__ball_yellow::after, .new-year__ball_blue::after {
+        display: none;
+    }
+}
+
+@media (max-height: 414px) and (max-width: 736px) {
+    .new-year__center-block {
+        height: 230px;
+        position: relative;
+        top: 39%;
+    }
+
+    .new-year__right-block,  .new-year__left-block{
+        margin-top: 50px;
+    }
+}
