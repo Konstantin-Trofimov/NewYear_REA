@@ -148,7 +148,7 @@ let christmasBallsConfig = [
         selector: 'new-year__ball_red-big'
     },
     {
-        emergenceDate: new Date('2021-12-24'),
+        emergenceDate: new Date('2021-12-28T10:00:00Z'),
         selector: 'new-year__ball_purple'
     }
 ];
