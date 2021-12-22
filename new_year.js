@@ -51,10 +51,10 @@ function snowfallAnimation () {
             this.canvasHeight = canvasHeight;
             this.columns = this.canvasWidth/this.fontSize;
             this.symbols = [];
-            this.#initialize();
+            this.initialize();
             this.fontSizeChange();
         }
-        #initialize(){
+        initialize(){
             for (let i = 0; i < this.columns; i++) {
                 this.symbols[i] = new Symbol(i, 0, this.fontSize, this.canvasHeight);
             }
@@ -64,7 +64,7 @@ function snowfallAnimation () {
             this.canvasHeight = height;
             this.columns = this.canvasWidth/this.fontSize;
             this.symbols = [];
-            this.#initialize();
+            this.initialize();
         }
 
         fontSizeChange() {
